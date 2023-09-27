@@ -5,7 +5,16 @@ const app = express();
 // **************
 
 // 1) Install and Require Helmet
+// Helmet helps you secure your Express apps by setting various HTTP headers.
+// Require helmet
 let helmet = require('helmet');
+
+
+// 2) Hide Potentially Dangerous Information Using helmet.hidePoweredBy()
+// Hackers can exploit known vulnerabilities in Express/Node if they see that your site is powered by Express. 
+// X-Powered-By: Express is sent in every request coming from Express by default. 
+// Use the helmet.hidePoweredBy() middleware to remove the X-Powered-By header.
+app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0'}));
 
 
 
