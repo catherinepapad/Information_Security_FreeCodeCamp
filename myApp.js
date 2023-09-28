@@ -140,16 +140,13 @@ app.use(helmet({
 }))*/
 
 app.use(helmet({
-  frameguard: {         // configure
-    action: 'deny'
-  },
+  noChache: true,
   contentSecurityPolicy: {    // enable and configure
     directives: {
       defaultSrc: ["'self'"],
-      styleSrc: ['style.com'],
+      scriptSrc: ["'self'", "trusted-cdn.com"],
     }
-  },
-  dnsPrefetchControl: false     // disable
+  }
 }))
 
 
