@@ -34,6 +34,14 @@ app.use(helmet.frameguard({action: 'deny'}));
 app.use(helmet.xssFilter());
 
 
+// 5) Avoid Inferring the Response MIME Type with helmet.noSniff()
+// Browsers can use content or MIME sniffing to override the Content-Type header of a response to guess and process the data using an implicit content type. While this can be convenient in some scenarios, it can also lead to some dangerous attacks. 
+// This middleware sets the X-Content-Type-Options header to nosniff, instructing the browser to not bypass the provided Content-Type.
+// Use the helmet.noSniff() method on your server.
+app.use(helmet.noSniff());
+
+
+
 
 
 
