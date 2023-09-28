@@ -95,53 +95,11 @@ let helmet = require('helmet');
 
 // 11) Configure Helmet Using the ‘parent’ helmet() Middleware
 // app.use(helmet()) will automatically include all the middleware introduced above, except noCache(), and contentSecurityPolicy(), but these can be enabled if necessary. You can also disable or configure any other middleware individually, using a configuration object.
-/* Example:
-app.use(helmet({
-  frameguard: {         // configure
-    action: 'deny'
-  },
-  contentSecurityPolicy: {    // enable and configure
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ['style.com'],
-    }
-  },
-  dnsPrefetchControl: false     // disable
-}))
-*/
 // We introduced each middleware separately for teaching purposes and for ease of testing. Using the ‘parent’ helmet() middleware is easy to implement in a real project.
-/*
-ninetyDaysInSeconds = 90*24*60*60;
-
-app.use(helmet({
-  hidePoweredBy: {            // Ch 2 - Hide Potentially Dangerous Information
-    setTo: 'PHP 4.2.0'
-  },
-  frameguard: {               // Ch 3 - Mitigate the Risk of Clickjacking
-    action: 'deny'
-  },
-  xssFilter,                  // Ch 4 - Mitigate the Risk of Cross Site Scripting (XSS) Attacks
-  noSniff,                    // Ch 5 - Avoid Inferring the Response MIME Type
-  ieNoOpen,                   // Ch 6 - Prevent IE from Opening Untrusted HTML
-  hsts: {                     // Ch 7 - Ask Browsers to Access Your Site via HTTPS Only
-    maxAge: ninetyDaysInSeconds,
-    force: true
-  },
-  dnsPrefetchControl: {       // Ch 8 - Disable DNS Prefetching
-    allow: false
-  },
-  noCache,                    // Ch 9 - Disable Client-Side Caching
-  contentSecurityPolicy: {    // Ch 10 - Set a Content Security Policy
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "trusted-cdn.com"],
-    }
-  }
-}))*/
 
 app.use(helmet({
   noChache: true,
-  contentSecurityPolicy: {    // enable and configure
+  contentSecurityPolicy: {    
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "trusted-cdn.com"],
