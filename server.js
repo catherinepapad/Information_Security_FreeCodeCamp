@@ -15,7 +15,7 @@ const someOtherPlaintextPassword = 'pass123';
 // Add all your code for these lessons in the server.js file between the code we have started you off with. Do not change or delete the code we have added for you.
 // BCrypt has already been added as a dependency, so require it as bcrypt in your server.
 
-const bcrypt      = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 // 13) Hash and Compare Passwords Asynchronously
 // *********************************************
@@ -42,8 +42,21 @@ bcrypt.hash('passw0rd!', 13, (err, hash) => {
 
 
 //START_ASYNC -do not remove notes, place code between correct pair of notes.
+bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+  // Store hash in your db
+});   
 
+bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+  /*res == true or false*/
+});
 
+bcrypt.hash('passw0rd!', 13, (err, hash) => {
+  console.log(hash);
+  //$2a$12$Y.PHPE15wR25qrrtgGkiYe2sXo98cjuMCG1YwSI5rJW1DSJp0gEYS
+  bcrypt.compare('passw0rd!', hash, (err, res) => {
+    console.log(res); //true
+  });
+});
 
 //END_ASYNC
 
