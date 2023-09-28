@@ -64,6 +64,12 @@ app.use(helmet.hsts({maxAge: ninetyDaysInSeconds, force: true}));
 app.use(helmet.dnsPrefetchControl({allow: false}));
 
 
+// 9) Disable Client-Side Caching with helmet.noCache()
+// If you are releasing an update for your website, and you want the users to always download the newer version, you can (try to) disable caching on client’s browser. It can be useful in development too. Caching has performance benefits, which you will lose, so only use this option when there is a real need.
+// Use the helmet.noCache() method on your server.
+app.use(helmet.noCache());
+
+
 
 
 
