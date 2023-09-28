@@ -61,7 +61,7 @@ app.use(helmet.hsts({maxAge: ninetyDaysInSeconds, force: true}));
 // This may lead to over-use of the DNS service (if you own a big website, visited by millions people…), privacy issues (one eavesdropper could infer that you are on a certain page), or page statistics alteration (some links may appear visited even if they are not). 
 // If you have high security needs you can disable DNS prefetching, at the cost of a performance penalty.
 // Use the helmet.dnsPrefetchControl() method on your server.
-app.use(helmet.dnsPrefetchControl({allow: true}));
+app.use(helmet.dnsPrefetchControl({allow: false}));
 
 
 
