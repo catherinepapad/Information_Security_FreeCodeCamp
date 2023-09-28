@@ -137,7 +137,7 @@ app.use(helmet({
       scriptSrc: ["'self'", "trusted-cdn.com"],
     }
   }
-}));
+}))
 
 
 
