@@ -7,3 +7,30 @@ BCrypt hashes will always look like $2a$13$ZyprE5MRw2Q3WpNOGZWGbeG7ADUre1Q8QO.uU
 Add all your code for these lessons in the server.js file between the code we have started you off with. Do not change or delete the code we have added for you.
 
 BCrypt has already been added as a dependency, so require it as bcrypt in your server.
+
+
+# 13) Hash and Compare Passwords Asynchronously
+
+As hashing is designed to be computationally intensive, it is recommended to do so asynchronously on your server as to avoid blocking incoming connections while you hash. All you have to do to hash a password asynchronous is call
+
+bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+    // Store hash in your db
+}); 
+
+Add this hashing function to your server (we've already defined the variables used in the function for you to use) and log it to the console for you to see! At this point you would normally save the hash to your database.
+
+Now when you need to figure out if a new input is the same data as the hash you would just use the compare function. 
+
+bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+  // res == true or false
+}); 
+
+Add this into your existing hash function (since you need to wait for the hash to complete before calling the compare function) after you log the completed hash and log 'res' to the console within the compare. You should see in the console a hash, and then 'true' is printed! If you change 'myPlaintextPassword' in the compare function to 'someOtherPlaintextPassword', then it should say false.
+ 
+bcrypt.hash('passw0rd!', 13, (err, hash) => {
+  console.log(hash);
+  //$2a$12$Y.PHPE15wR25qrrtgGkiYe2sXo98cjuMCG1YwSI5rJW1DSJp0gEYS
+  bcrypt.compare('passw0rd!', hash, (err, res) => {
+    console.log(res); //true
+  });
+}); 
