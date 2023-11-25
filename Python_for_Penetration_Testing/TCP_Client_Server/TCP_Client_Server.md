@@ -20,7 +20,7 @@ Open different terminal, navigate to directory and execute `client` as
 python3 client.py
 ```
 
-## Run between Windows and Linux Virtual Machine
+## Run between Windows and Linux (or Linux VM)
 It is important to specify host's IP . 
 
 Initiate the `server` and then run the `client`.
